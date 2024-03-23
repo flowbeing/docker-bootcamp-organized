@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  nginx:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    depends_on:
+      - react-client
+      - express-server
+    ports:
+      - "8080:80"
+
+  react-client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./react-client
+
+  express-server:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./express-server
